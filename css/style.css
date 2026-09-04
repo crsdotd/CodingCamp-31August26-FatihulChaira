@@ -1,0 +1,817 @@
+/* =============================================================
+   Todo Life Dashboard — style.css
+   All styling for the application. No inline styles anywhere.
+   Requirements: 11.2, 12.2
+   ============================================================= */
+
+/* =============================================================
+   1. CSS Custom Properties (Design Tokens)
+      Light theme on :root; dark overrides on [data-theme="dark"]
+   ============================================================= */
+
+:root {
+  /* Background layers */
+  --color-bg:             #f0f2f5;
+  --color-surface:        #ffffff;
+  --color-surface-raised: #f8f9fa;
+
+  /* Text */
+  --color-text-primary:   #6c10d4;
+  --color-text-secondary: #6b7280;
+  --color-text-muted:     #9ca3af;
+
+  /* Brand / accent */
+  --color-accent:         #6c10d4;
+  --color-accent-hover:   #6c10d4;
+  --color-accent-text:    #ffffff;
+
+  /* Borders & dividers */
+  --color-border:         #6c10d4;
+  --color-border-focus:   #6c10d4;
+
+  /* State colours */
+  --color-error:          #dc2626;
+  --color-error-bg:       #fef2f2;
+  --color-error-border:   #fca5a5;
+  --color-success:        #16a34a;
+
+  /* Disabled */
+  --color-disabled-bg:    #e5e7eb;
+  --color-disabled-text:  #9ca3af;
+
+  /* Button variants */
+  --color-btn-secondary-bg:    #e5e7eb;
+  --color-btn-secondary-text:  #374151;
+  --color-btn-secondary-hover: #d1d5db;
+  --color-btn-ghost-text:      #6b7280;
+  --color-btn-ghost-hover-bg:  #f3f4f6;
+
+  /* Shadows */
+  --shadow-card:   0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+  /* Spacing & geometry */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --panel-gap:   16px;
+  --panel-pad:   20px;
+
+  /* Typography */
+  --font-sans:  'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:  'Courier New', 'Consolas', monospace;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-theme:  200ms ease;
+}
+
+[data-theme="dark"] {
+  --color-bg:             #0f1117;
+  --color-surface:        #1c1f2b;
+  --color-surface-raised: #252836;
+
+  --color-text-primary:   #e8eaf0;
+  --color-text-secondary: #9ea3b0;
+  --color-text-muted:     #6b7280;
+
+  --color-accent:         #6c10d4;
+  --color-accent-hover:   #6c10d4;
+  --color-accent-text:    #ffffff;
+
+  --color-border:         #6c10d4;
+  --color-border-focus:   #6c10d4;
+
+  --color-error:          #f87171;
+  --color-error-bg:       #2d1212;
+  --color-error-border:   #7f1d1d;
+  --color-success:        #4ade80;
+
+  --color-disabled-bg:    #2e3245;
+  --color-disabled-text:  #4b5563;
+
+  --color-btn-secondary-bg:    #2e3245;
+  --color-btn-secondary-text:  #d1d5db;
+  --color-btn-secondary-hover: #3a3f57;
+  --color-btn-ghost-text:      #9ea3b0;
+  --color-btn-ghost-hover-bg:  #252836;
+
+  --shadow-card:       0 1px 3px rgba(0, 0, 0, 0.40);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.50);
+}
+
+
+/* =============================================================
+   2. Global Reset & Base
+   ============================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  transition: background-color var(--transition-theme), color var(--transition-theme);
+}
+
+/* Honour the HTML hidden attribute everywhere */
+[hidden] {
+  display: none !important;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+
+/* =============================================================
+   3. Application Header
+   ============================================================= */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.app-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-btn-ghost-hover-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Show/hide theme icons based on active theme */
+/* Light mode: show the moon (indicates switching TO dark); hide sun */
+.theme-icon-dark  { display: inline; }
+.theme-icon-light { display: none;   }
+
+/* Dark mode: show the sun (indicates switching TO light); hide moon */
+[data-theme="dark"] .theme-icon-dark  { display: none;   }
+[data-theme="dark"] .theme-icon-light { display: inline; }
+
+.theme-label {
+  display: inline;
+}
+
+
+/* =============================================================
+   4. Dashboard Grid Layout
+   ============================================================= */
+
+.dashboard {
+  display: grid;
+  /*
+   * Two equal columns; rows are auto-sized.
+   * On ~1280×800 the four panels fit in two rows of two.
+   */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--panel-gap);
+  padding: var(--panel-gap) 24px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Assign panels to grid areas */
+.panel--greeting { grid-column: 1; grid-row: 1; }
+.panel--timer    { grid-column: 2; grid-row: 1; }
+.panel--tasks    { grid-column: 1; grid-row: 2; }
+.panel--links    { grid-column: 2; grid-row: 2; }
+
+
+/* =============================================================
+   5. Panel Base Style
+   ============================================================= */
+
+.panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--panel-pad);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    background-color var(--transition-theme),
+    border-color var(--transition-theme),
+    box-shadow var(--transition-theme);
+}
+
+.panel-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+
+/* =============================================================
+   6. Shared Form Utilities
+   ============================================================= */
+
+.form-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-theme);
+}
+
+.text-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.text-input:hover {
+  border-color: var(--color-accent);
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.18);
+}
+
+[data-theme="dark"] .text-input:focus {
+  box-shadow: 0 0 0 3px rgba(107, 138, 251, 0.22);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+/* =============================================================
+   7. Buttons
+   ============================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Primary — filled accent */
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.btn--primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Secondary — subtle fill */
+.btn--secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border-color: var(--color-border);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background-color: var(--color-btn-secondary-hover);
+}
+
+/* Ghost — text-only */
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-btn-ghost-text);
+  border-color: var(--color-border);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background-color: var(--color-btn-ghost-hover-bg);
+  color: var(--color-text-primary);
+}
+
+/* Disabled state — all variants */
+.btn:disabled {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+  border-color: var(--color-disabled-bg);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* =============================================================
+   8. Inline Errors & Error Banners
+   ============================================================= */
+
+.inline-error {
+  font-size: 0.8125rem;
+  color: var(--color-error);
+  margin-top: 4px;
+}
+
+.error-banner {
+  padding: 10px 14px;
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+
+/* =============================================================
+   9. Greeting Panel
+   ============================================================= */
+
+.panel--greeting {
+  /* slightly taller feel via padding */
+  padding-top: 24px;
+}
+
+.greeting-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.greeting-time {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.greeting-date {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.greeting-text {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-top: 8px;
+}
+
+.greeting-name-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name-form__row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.name-form__row .text-input {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =============================================================
+   10. Focus Timer Panel
+   ============================================================= */
+
+.panel--timer {
+  align-items: center;
+  text-align: center;
+}
+
+.timer-display-wrapper {
+  padding: 16px 0 8px;
+}
+
+.timer-display {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.timer-controls .btn {
+  min-width: 88px;
+}
+
+/* On-screen completion alert */
+.timer-done-alert {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  text-align: center;
+}
+
+.timer-done-alert__message {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+
+/* =============================================================
+   11. Task List Panel
+   ============================================================= */
+
+.task-add-section {
+  /* no extra spacing needed — gap on .panel handles it */
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-form__row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.task-form__row .text-input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The scrollable task list */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 99px;
+}
+
+/* Individual task item */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.task-item:hover {
+  border-color: var(--color-accent);
+}
+
+/* Completed task modifier */
+.task-item--done {
+  opacity: 0.7;
+}
+
+.task-item--done .task-description {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+/* Task description text */
+.task-description {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  word-break: break-word;
+  transition: color var(--transition-fast);
+}
+
+/* Inline edit input (replaces description text during editing) */
+.task-edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border-focus);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  font-family: inherit;
+}
+
+.task-edit-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.18);
+}
+
+.task-edit-error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-top: 2px;
+}
+
+/* Task action buttons — icon-sized */
+.task-toggle-btn,
+.task-edit-btn,
+.task-save-btn,
+.task-cancel-btn,
+.task-delete-btn {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.task-toggle-btn:hover,
+.task-edit-btn:hover,
+.task-save-btn:hover,
+.task-cancel-btn:hover {
+  background-color: var(--color-btn-ghost-hover-bg);
+  color: var(--color-text-primary);
+  border-color: var(--color-accent);
+}
+
+.task-delete-btn:hover {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.task-toggle-btn:focus-visible,
+.task-edit-btn:focus-visible,
+.task-save-btn:focus-visible,
+.task-cancel-btn:focus-visible,
+.task-delete-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+
+/* =============================================================
+   12. Quick Links Panel
+   ============================================================= */
+
+.links-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 40px;
+}
+
+/* Rendered link wrapper */
+.link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* The clickable shortcut button */
+.link-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.link-btn:hover {
+  background-color: var(--color-btn-ghost-hover-bg);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.link-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Delete button sitting next to each link */
+.link-delete-btn {
+  padding: 4px 7px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.link-delete-btn:hover {
+  background-color: var(--color-error-bg);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.link-delete-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Add-link form */
+.link-add-section {
+  border-top: 1px solid var(--color-border);
+  padding-top: 14px;
+}
+
+.link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link-form__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+
+/* =============================================================
+   13. Responsive — compact on narrow viewports
+   ============================================================= */
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 12px 16px 20px;
+  }
+
+  .panel--greeting,
+  .panel--timer,
+  .panel--tasks,
+  .panel--links {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .timer-display {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 10px 16px;
+  }
+
+  .theme-label {
+    display: none;
+  }
+
+  .timer-display {
+    font-size: 3rem;
+  }
+
+  .task-list {
+    max-height: 200px;
+  }
+}

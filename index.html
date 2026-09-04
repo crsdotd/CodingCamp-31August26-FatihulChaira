@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- ============================================================
+         HEADER — Theme Toggle
+         ThemeModule targets: #theme-toggle-btn
+    ============================================================ -->
+    <header class="app-header">
+      <span class="app-title">Todo Life Dashboard</span>
+      <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Toggle light/dark theme">
+        <span class="theme-icon-light" aria-hidden="true">☀️</span>
+        <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+        <span class="theme-label">Dark Mode</span>
+      </button>
+    </header>
+
+    <main class="dashboard">
+
+      <!-- ============================================================
+           PANEL 1 — Greeting Panel
+           GreetingModule targets:
+             #greeting-text      — greeting + user name ("Good Morning, Fatih")
+             #greeting-time      — current time (HH:MM)
+             #greeting-date      — current date ("Wednesday, 3 September 2026")
+             #name-form          — form wrapping the name input
+             #name-input         — text input for user name
+             #name-submit-btn    — submit button
+             #name-error         — inline error message for name input
+             #greeting-error     — error banner for storage failures
+      ============================================================ -->
+      <section id="greeting-panel" class="panel panel--greeting" aria-labelledby="greeting-text">
+
+        <div class="greeting-display">
+          <p id="greeting-time" class="greeting-time" aria-live="polite" aria-atomic="true">--:--</p>
+          <p id="greeting-date" class="greeting-date" aria-live="polite" aria-atomic="true">Loading date…</p>
+          <h1 id="greeting-text" class="greeting-text" aria-live="polite" aria-atomic="true">Good Morning</h1>
+        </div>
+
+        <div class="greeting-name-section">
+          <form id="name-form" class="name-form" novalidate>
+            <label for="name-input" class="form-label">Your name</label>
+            <div class="name-form__row">
+              <input
+                id="name-input"
+                class="text-input"
+                type="text"
+                name="userName"
+                placeholder="Enter your name"
+                maxlength="50"
+                autocomplete="name"
+                aria-describedby="name-error"
+              />
+              <button id="name-submit-btn" class="btn btn--primary" type="submit">Save</button>
+            </div>
+            <p id="name-error" class="inline-error" role="alert" aria-live="assertive" hidden></p>
+          </form>
+          <p id="greeting-error" class="error-banner" role="alert" aria-live="assertive" hidden></p>
+        </div>
+
+      </section>
+
+      <!-- ============================================================
+           PANEL 2 — Focus Timer (Pomodoro)
+           TimerModule targets:
+             #timer-display      — MM:SS countdown value
+             #timer-start-btn    — Start control
+             #timer-stop-btn     — Stop control
+             #timer-reset-btn    — Reset control
+             #timer-done-alert   — visible on-screen alert shown at 00:00
+      ============================================================ -->
+      <section id="focus-timer" class="panel panel--timer" aria-labelledby="timer-heading">
+
+        <h2 id="timer-heading" class="panel-heading">Focus Timer</h2>
+
+        <div class="timer-display-wrapper">
+          <output id="timer-display" class="timer-display" aria-live="off" aria-label="Time remaining">25:00</output>
+        </div>
+
+        <div class="timer-controls" role="group" aria-label="Timer controls">
+          <button id="timer-start-btn" class="btn btn--primary" type="button">Start</button>
+          <button id="timer-stop-btn" class="btn btn--secondary" type="button" disabled>Stop</button>
+          <button id="timer-reset-btn" class="btn btn--ghost" type="button">Reset</button>
+        </div>
+
+        <div id="timer-done-alert" class="timer-done-alert" role="alert" aria-live="assertive" hidden>
+          <p class="timer-done-alert__message">⏰ Time's up! Great work on your focus session.</p>
+        </div>
+
+      </section>
+
+      <!-- ============================================================
+           PANEL 3 — Task List (To-Do)
+           TaskModule targets:
+             #task-form          — form wrapping the add-task controls
+             #task-input         — text input for new task description
+             #task-add-btn       — add task submit button
+             #task-add-error     — inline error below add form
+             #task-list          — <ul> containing task items
+             #task-error-banner  — error banner for storage failures
+           Per-task elements (rendered by JS, class names listed for CSS):
+             .task-item          — <li> wrapper
+             .task-item--done    — modifier for completed tasks
+             .task-description   — task text <span>
+             .task-edit-input    — editable <input> (shown during edit mode)
+             .task-edit-error    — inline error shown during edit mode
+             .task-toggle-btn    — completion toggle control
+             .task-edit-btn      — edit control
+             .task-save-btn      — save control (edit mode)
+             .task-cancel-btn    — cancel control (edit mode)
+             .task-delete-btn    — delete control
+      ============================================================ -->
+      <section id="task-list-panel" class="panel panel--tasks" aria-labelledby="task-heading">
+
+        <h2 id="task-heading" class="panel-heading">To-Do List</h2>
+
+        <div class="task-add-section">
+          <form id="task-form" class="task-form" novalidate>
+            <label for="task-input" class="form-label">New task</label>
+            <div class="task-form__row">
+              <input
+                id="task-input"
+                class="text-input"
+                type="text"
+                name="taskDescription"
+                placeholder="What do you need to do?"
+                maxlength="200"
+                aria-describedby="task-add-error"
+              />
+              <button id="task-add-btn" class="btn btn--primary" type="submit">Add</button>
+            </div>
+            <p id="task-add-error" class="inline-error" role="alert" aria-live="assertive" hidden></p>
+          </form>
+        </div>
+
+        <p id="task-error-banner" class="error-banner" role="alert" aria-live="assertive" hidden></p>
+
+        <ul id="task-list" class="task-list" aria-label="Task list" aria-live="polite">
+          <!-- Task items rendered by TaskModule.init() and addTask() -->
+        </ul>
+
+      </section>
+
+      <!-- ============================================================
+           PANEL 4 — Quick Links
+           QuickLinksModule targets:
+             #link-form          — form wrapping the add-link controls
+             #link-label-input   — text input for link label
+             #link-url-input     — text input for link URL
+             #link-add-btn       — add link submit button
+             #link-label-error   — inline error adjacent to label field
+             #link-url-error     — inline error adjacent to URL field
+             #links-container    — container for rendered link buttons
+             #links-error-banner — error banner for storage failures
+           Per-link elements (rendered by JS, class names listed for CSS):
+             .link-item          — wrapper for each link
+             .link-btn           — the clickable shortcut button
+             .link-delete-btn    — delete control
+      ============================================================ -->
+      <section id="quick-links-panel" class="panel panel--links" aria-labelledby="links-heading">
+
+        <h2 id="links-heading" class="panel-heading">Quick Links</h2>
+
+        <div id="links-container" class="links-container" aria-label="Quick links" aria-live="polite">
+          <!-- Link buttons rendered by QuickLinksModule.init() and addLink() -->
+        </div>
+
+        <p id="links-error-banner" class="error-banner" role="alert" aria-live="assertive" hidden></p>
+
+        <div class="link-add-section">
+          <form id="link-form" class="link-form" novalidate>
+            <h3 class="link-form__heading">Add a link</h3>
+
+            <div class="form-group">
+              <label for="link-label-input" class="form-label">Label</label>
+              <input
+                id="link-label-input"
+                class="text-input"
+                type="text"
+                name="linkLabel"
+                placeholder="e.g. GitHub"
+                maxlength="50"
+                aria-describedby="link-label-error"
+              />
+              <p id="link-label-error" class="inline-error" role="alert" aria-live="assertive" hidden></p>
+            </div>
+
+            <div class="form-group">
+              <label for="link-url-input" class="form-label">URL</label>
+              <input
+                id="link-url-input"
+                class="text-input"
+                type="url"
+                name="linkUrl"
+                placeholder="https://example.com"
+                maxlength="2048"
+                aria-describedby="link-url-error"
+              />
+              <p id="link-url-error" class="inline-error" role="alert" aria-live="assertive" hidden></p>
+            </div>
+
+            <button id="link-add-btn" class="btn btn--primary" type="submit">Add Link</button>
+          </form>
+        </div>
+
+      </section>
+
+    </main>
+
+    <script defer src="js/app.js"></script>
+  </body>
+</html>

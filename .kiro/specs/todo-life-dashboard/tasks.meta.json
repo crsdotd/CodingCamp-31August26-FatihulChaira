@@ -1,0 +1,261 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create `index.html` at the project root": [
+      {
+        "executionId": "035d0b41-a708-46f5-b541-0d9d64da0407",
+        "chatSessionId": "sess_cb7b9d77-4fdc-4409-89d2-b1758f7a6520",
+        "timestamp": 1788446661734
+      },
+      {
+        "executionId": "035d0b41-a708-46f5-b541-0d9d64da0407",
+        "chatSessionId": "sess_cb7b9d77-4fdc-4409-89d2-b1758f7a6520",
+        "timestamp": 1788446762280
+      }
+    ],
+    "1.2 Create `css/style.css` with base layout and CSS custom properties": [
+      {
+        "executionId": "28e53e62-f969-48bf-83c6-6688545eaa3a",
+        "chatSessionId": "sess_38f6b65e-115a-40b8-b8da-c957f36959cd",
+        "timestamp": 1788447008696
+      },
+      {
+        "executionId": "28e53e62-f969-48bf-83c6-6688545eaa3a",
+        "chatSessionId": "sess_38f6b65e-115a-40b8-b8da-c957f36959cd",
+        "timestamp": 1788447013627
+      }
+    ],
+    "1. Scaffold project structure and HTML skeleton": [
+      {
+        "executionId": "28e53e62-f969-48bf-83c6-6688545eaa3a",
+        "chatSessionId": "sess_38f6b65e-115a-40b8-b8da-c957f36959cd",
+        "timestamp": 1788447013722
+      }
+    ],
+    "2.1 Write `StorageService` module in `js/app.js`": [
+      {
+        "executionId": "f8eb9f0d-6be6-40df-92ca-15c594563916",
+        "chatSessionId": "sess_ccfad65a-6c07-4e28-b68c-c9cc7d4b87b9",
+        "timestamp": 1788447109333
+      },
+      {
+        "executionId": "f8eb9f0d-6be6-40df-92ca-15c594563916",
+        "chatSessionId": "sess_ccfad65a-6c07-4e28-b68c-c9cc7d4b87b9",
+        "timestamp": 1788447658826
+      }
+    ],
+    "2. Implement `StorageService`": [
+      {
+        "executionId": "f8eb9f0d-6be6-40df-92ca-15c594563916",
+        "chatSessionId": "sess_ccfad65a-6c07-4e28-b68c-c9cc7d4b87b9",
+        "timestamp": 1788447658927
+      }
+    ],
+    "3.1 Write `ThemeModule` in `js/app.js`": [
+      {
+        "executionId": "b7785f63-c4b3-4cc5-98c8-2aed7793f1ad",
+        "chatSessionId": "sess_fdf2e1b4-5fb6-4de8-bbd4-8247ec509ff9",
+        "timestamp": 1788447775875
+      },
+      {
+        "executionId": "b7785f63-c4b3-4cc5-98c8-2aed7793f1ad",
+        "chatSessionId": "sess_fdf2e1b4-5fb6-4de8-bbd4-8247ec509ff9",
+        "timestamp": 1788448433682
+      }
+    ],
+    "3. Implement `ThemeModule`": [
+      {
+        "executionId": "b7785f63-c4b3-4cc5-98c8-2aed7793f1ad",
+        "chatSessionId": "sess_fdf2e1b4-5fb6-4de8-bbd4-8247ec509ff9",
+        "timestamp": 1788448433749
+      }
+    ],
+    "4.1 Write pure helper functions: `getGreetingPeriod(hour)` and `formatDate(date)`": [
+      {
+        "executionId": "cf39d4e2-5e7d-4b43-ae73-602583581e40",
+        "chatSessionId": "sess_fa8eb2e4-0f2d-4a73-a37b-3d120309d719",
+        "timestamp": 1788448480072
+      },
+      {
+        "executionId": "a23a2b2c-f39b-48f8-8161-d76b369700c0",
+        "chatSessionId": "sess_5164bce3-4441-4d3b-ac22-6193e2dedae6",
+        "timestamp": 1788450107849
+      },
+      {
+        "executionId": "a23a2b2c-f39b-48f8-8161-d76b369700c0",
+        "chatSessionId": "sess_5164bce3-4441-4d3b-ac22-6193e2dedae6",
+        "timestamp": 1788450450500
+      }
+    ],
+    "4.3 Write `GreetingModule` in `js/app.js`": [
+      {
+        "executionId": "d181e2b6-053d-460e-b168-7cf24c2b7dae",
+        "chatSessionId": "sess_ff0b083f-5ce9-4bbd-99c4-fd9b03c5a476",
+        "timestamp": 1788450075638
+      },
+      {
+        "executionId": "175355b7-4002-44db-8ed5-c21101716a3f",
+        "chatSessionId": "sess_38911101-3b51-4be9-a8e6-40726ccf1bef",
+        "timestamp": 1788450525663
+      },
+      {
+        "executionId": "175355b7-4002-44db-8ed5-c21101716a3f",
+        "chatSessionId": "sess_38911101-3b51-4be9-a8e6-40726ccf1bef",
+        "timestamp": 1788450642852
+      }
+    ],
+    "4. Implement `GreetingModule`": [
+      {
+        "executionId": "175355b7-4002-44db-8ed5-c21101716a3f",
+        "chatSessionId": "sess_38911101-3b51-4be9-a8e6-40726ccf1bef",
+        "timestamp": 1788450642947
+      }
+    ],
+    "5.1 Write pure helper function `formatTime(totalSeconds)`": [
+      {
+        "executionId": "dfb86e8e-c6a7-406a-9170-23726143d519",
+        "chatSessionId": "sess_ee3813c8-52f1-4864-950c-8f65b03f9cf5",
+        "timestamp": 1788450717914
+      },
+      {
+        "executionId": "dfb86e8e-c6a7-406a-9170-23726143d519",
+        "chatSessionId": "sess_ee3813c8-52f1-4864-950c-8f65b03f9cf5",
+        "timestamp": 1788450877264
+      }
+    ],
+    "5.3 Write `TimerModule` in `js/app.js`": [
+      {
+        "executionId": "100fe43f-2f3e-4173-bd30-5d58ff2bac74",
+        "chatSessionId": "sess_ed5d3111-6b25-407d-8245-40fd7582fac9",
+        "timestamp": 1788450925164
+      },
+      {
+        "executionId": "100fe43f-2f3e-4173-bd30-5d58ff2bac74",
+        "chatSessionId": "sess_ed5d3111-6b25-407d-8245-40fd7582fac9",
+        "timestamp": 1788451070202
+      }
+    ],
+    "5. Implement `TimerModule`": [
+      {
+        "executionId": "100fe43f-2f3e-4173-bd30-5d58ff2bac74",
+        "chatSessionId": "sess_ed5d3111-6b25-407d-8245-40fd7582fac9",
+        "timestamp": 1788451070281
+      }
+    ],
+    "7.1 Write pure helper functions: `normaliseTaskDescription(str)` and `isDuplicateTask(tasks, desc, excludeId?)`": [
+      {
+        "executionId": "c6af9e4e-2300-426f-b37e-2b7231cfdba2",
+        "chatSessionId": "sess_26bb37da-b805-40dd-8307-c9718118751e",
+        "timestamp": 1788451249042
+      },
+      {
+        "executionId": "c6af9e4e-2300-426f-b37e-2b7231cfdba2",
+        "chatSessionId": "sess_26bb37da-b805-40dd-8307-c9718118751e",
+        "timestamp": 1788451384823
+      }
+    ],
+    "7.3 Implement `TaskModule.addTask(description)` in `js/app.js`": [
+      {
+        "executionId": "b919a97e-faea-40bd-996b-d565824a4fed",
+        "chatSessionId": "sess_1fc254a9-bda7-4521-937d-359533693944",
+        "timestamp": 1788451468245
+      },
+      {
+        "executionId": "b919a97e-faea-40bd-996b-d565824a4fed",
+        "chatSessionId": "sess_1fc254a9-bda7-4521-937d-359533693944",
+        "timestamp": 1788451703422
+      }
+    ],
+    "7.6 Implement `TaskModule.editTask(id, description)` in `js/app.js`": [
+      {
+        "executionId": "b99faa7e-cd1d-44d0-b0e7-b51f22e0c7d4",
+        "chatSessionId": "sess_5ee86e33-4112-4ee0-9331-0fcaa203bf0a",
+        "timestamp": 1788451780287
+      },
+      {
+        "executionId": "b99faa7e-cd1d-44d0-b0e7-b51f22e0c7d4",
+        "chatSessionId": "sess_5ee86e33-4112-4ee0-9331-0fcaa203bf0a",
+        "timestamp": 1788452017217
+      }
+    ],
+    "7. Implement `TaskModule`": [
+      {
+        "executionId": "499319c6-6bda-422c-bbe0-6c925fb42823",
+        "chatSessionId": "sess_ef4b5b26-06e7-4421-a49f-9e20e0bb0267",
+        "timestamp": 1788452379354
+      },
+      {
+        "executionId": "499319c6-6bda-422c-bbe0-6c925fb42823",
+        "chatSessionId": "sess_ef4b5b26-06e7-4421-a49f-9e20e0bb0267",
+        "timestamp": 1788452473855
+      }
+    ],
+    "8.1 Write pure helper functions: `isValidUrl(url)` and `isValidLabel(str)`": [
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452591430
+      },
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452829602
+      }
+    ],
+    "8.3 Implement `QuickLinksModule.addLink(label, url)` in `js/app.js`": [
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452833854
+      },
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452838808
+      }
+    ],
+    "8.4 Implement `QuickLinksModule.deleteLink(id)` in `js/app.js`": [
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452834732
+      },
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452839586
+      }
+    ],
+    "8.5 Implement `QuickLinksModule.init()` and rendering in `js/app.js`": [
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452844367
+      },
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452848488
+      }
+    ],
+    "8. Implement `QuickLinksModule`": [
+      {
+        "executionId": "c6216ce2-eb57-4abc-9b25-f72548fcdb2d",
+        "chatSessionId": "sess_7cd75a5a-d464-4f52-a54a-1a03a374a9be",
+        "timestamp": 1788452848605
+      }
+    ],
+    "10. Wire all modules together in `init()`": [
+      {
+        "executionId": "0cb3447d-0f4b-40a6-b385-f260f6352783",
+        "chatSessionId": "sess_a66057be-dab3-4a30-a1e4-dd5fe9c7b445",
+        "timestamp": 1788452895253
+      },
+      {
+        "executionId": "0cb3447d-0f4b-40a6-b385-f260f6352783",
+        "chatSessionId": "sess_a66057be-dab3-4a30-a1e4-dd5fe9c7b445",
+        "timestamp": 1788452947594
+      }
+    ]
+  }
+}
